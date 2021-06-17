@@ -105,7 +105,7 @@
             </div>
 
             <div class="txt-center">
-                <button type="submit" class="buttondiary">다이어리 등록</button>
+                <button type="submit" class="buttondiary">가계부 등록</button>
             </div>
             <a href="javascript:;" class="close"></a>
 
@@ -129,7 +129,7 @@
         </div>
 
         <div class="menu4" id="menu">
-            <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
+            <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" onclick="location.href='/plan'" alt="Avatar" class="image" />
             <div class="overlay">
                 <div class="text">여 <br />행</div>
             </div>
@@ -139,9 +139,9 @@
         <div class="clearbox right"></div>
         <div class="head right">
             <div class="clearboxprofile"></div>
-            <p class="welcome" th:text="| ${loginUser.username}님 반갑습니당. |"></p>
+            <p class="welcome" th:text="| ${loginUser.username}님 반갑습니다 |"></p>
             <button type="button" class="btm_image1" id="img_btn">
-                <img th:src="|/images/${loginUser.userimage}|" onclick="locate_mypage()" class="profileimage" width="70px," height="70px" />
+                <img th:src="|/images/${loginUser.userimage}|" onclick="location.href='/mypage'" class="profileimage" width="70px," height="70px" />
             </button>
         </div>
 

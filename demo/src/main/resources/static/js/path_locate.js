@@ -11,5 +11,5 @@ location.href="diary";
 }
 
 function locate_mypage(){ // onclick="locate_mypage" 추가
-location.href="login/mypage";
+location.href="mypage";
 }

@@ -29,11 +29,13 @@
                 </div>   
             </div>
             <div class="menu4" id="menu">
-                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image">
-                <div class="overlay">
-                  <div class="text">여 <br>행</div>
-                </div>   
-            </div>   
+                <a  class="menu4" onclick="location.href='/plan'" >
+                    <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
+                    <div class="overlay">
+                        <div class="text" >여 <br />행</div>
+                    </div>
+                </a>
+            </div>
 
             <button type="button" class="logout" id="logout"  onclick='alert("로그아웃 하시겠습니까?")'>로그아웃</button>
             <p class="welcome" th:text="|${loginUser.username}님 반갑습니다. |"></p>
@@ -50,7 +52,7 @@
                         <h1>마이페이지</h1>
                         <div class="myimg">
                            <!-- <img src="/img/t1.png" th:src="|/images/${loginUser.userimage}|" class="profileimage">-->
-                            <img th:src="|/images/${loginUser.userimage}|" class="profileimage">
+                            <img th:src="|/images/${loginUser.userimage}|" class="myimg">
                         </div>
                         <p th:text="|${loginUser.username} 님의 다이어리|">(아이디)님의 다이어리</p>
                     </div>

@@ -146,8 +146,8 @@ public class DiaryController {
     @GetMapping("/read/{id}")
     public String read(@PathVariable("id") Long id, Model model,HttpSession session) {
 
-        DiaryVO sessionDiary = (DiaryVO)session.getAttribute("diary");
-        model.addAttribute("diary",sessionDiary);
+     /*   DiaryVO sessionDiary = (DiaryVO)session.getAttribute("diary");
+        model.addAttribute("diary",sessionDiary);*/
 
         //세션에 저장된 유저 값을 불러온다.
         User loginUser = (User)session.getAttribute("ConfirmUser");
@@ -318,7 +318,7 @@ public class DiaryController {
         diaryService.saveDiary(diaryDto);
 
 
-        return "redirect:/read/" + diaryService.findId();
+        return "redirect:/list";
 
 
     }
