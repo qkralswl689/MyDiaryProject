@@ -1,0 +1,947 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@charset "utf-8";
+/* *{
+    box-sizing: border-box;
+    margin:0px;
+} */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  padding-right: 50px;
+  padding-left: 5%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* coustom css */
+
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+.main {
+  display: contents;
+  float: right;
+}
+.container {
+  width: 48.5%;
+  height: 100%;
+  background-image: url(https://raw.githubusercontent.com/yeanakim-hi/ProjDiary/main/ri.png);
+  background-repeat: no-repeat;
+  background-size: 95% 80%;
+  float: left;
+  position: absolute;
+  top: 9%;
+}
+.container2 {
+  width: 48.5%;
+  height: 100%;
+  background-image: url(https://raw.githubusercontent.com/yeanakim-hi/ProjDiary/main/%EC%99%BC%EC%AA%BD.png);
+  float: left;
+  background-size: 95% 80%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 9%;
+}
+.writeContainer {
+  width: 90%;
+  height: 100%;
+  background-image: url(https://raw.githubusercontent.com/yeanakim-hi/ProjDiary/main/%EC%99%BC%EC%AA%BD.png);
+  float: left;
+  background-size: 95% 80%;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 9%;
+}
+.clearbox {
+  clear: both;
+} /* 컨텐츠  float 밑에 따라오는 컨텐츠 없도록 설정*/
+.head.left {
+  float: left;
+  width: 50%;
+}
+.head.right {
+  float: right;
+  width: 50%;
+}
+#menu {
+  margin-top: 2.7%;
+  width: 80px;
+  background-size: 100% 100%;
+  display: flex;
+  float: left;
+  position: relative;
+}
+
+.text {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgb(243, 241, 241);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+}
+
+.menu1:hover .overlay {
+  opacity: 1;
+}
+
+.menu2:hover .overlay {
+  opacity: 1;
+}
+
+.menu3:hover .overlay {
+  opacity: 1;
+}
+
+.menu4:hover .overlay {
+  opacity: 1;
+}
+.menu1 {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.menu1:hover,
+.menu1:focus,
+.menu1:active {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.menu2 {
+  margin-left: 10%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+
+}
+.menu2:hover,
+.menu2:focus,
+.menu2:active {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+.readmenu2 {
+  margin-left: 2%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+
+}
+.readmenu2:hover,
+.readmenu2:focus,
+.readmenu2:active {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+}
+#img_btn {
+  float: right;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 0px;
+}
+.btm_image1 {
+  margin-top: 2%;
+  margin-right: 0.5%;
+  object-fit: cover;
+  background-color: white;
+}
+
+#upload_btn {
+  margin: 50px 50px 0px 80px;
+}
+.logout {
+  float: right;
+  margin-left: 2.5%;
+  margin-right: 2%;
+  margin-top: 5%;
+  text-align: center;
+}
+.welcome {
+  float: right;
+  margin-right: 7%;
+  margin-top: 5%;
+  text-align: center;
+}
+.menubar {
+  float: right;
+  margin-right: 9%;
+  background-color: white;
+  border: white;
+  opacity: 0.5;
+  margin-top: 3%;
+}
+#img_menubar {
+  background-color: transparent;
+}
+
+.title {
+  margin: 10%;
+  width: 80%;
+  font-size: 40px;
+  display: inline-block;
+}
+
+.title p {
+  font-size: 15px;
+  text-align: right;
+  /* margin-right: 30px; */
+}
+
+.submit-button {
+  float: right;
+}
+.submit {
+  height: 150px;
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10px;
+}
+.main_left_box {
+  width: 100%;
+  height: 80%;
+}
+.main_right_box {
+  width: 100%;
+  height: 70%;
+  width: 100%;
+  height: 100%;
+}
+.contents-01-article.left {
+  margin: 2% 2% 0% 8%;
+  width: 80%;
+  float: left;
+  padding-left: 5%;
+}
+
+.contents-01-article.left.bottom {
+  margin: 1% 10% 0% 8%;
+  width: 75%;
+  float: left;
+  padding-left: 0px;
+  height: 55%;
+  background-color: #98a0a6;
+}
+.contents-01-article.right {
+  margin-right: 12%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  width: 80%;
+  float: right;
+}
+.contents-01-article.right.bottom {
+  margin-right: 5%;
+  padding-top: 0%;
+  width: 90%;
+  margin-top: 0%;
+  float: right;
+}
+
+.photo-container {
+  border-radius: 1px;
+  background-color: #d7dbdb;
+  height: 250px;
+}
+
+.contactForm {
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: auto;
+  width: 90%;
+  height: auto;
+  overflow: hidden;
+  /*SUCESS STYLES*/
+}
+.contactForm .formHeader {
+  background: #c4f5f7;
+  color: rgb(107, 105, 105);
+  padding-top: 1%;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 5px;
+  /*TRANSITION*/
+  transition: all 0.5s ease;
+  height: 30px;
+  width: 77%;
+  margin-left: 9%;
+}
+.contactForm .formHeader h1 {
+  line-height: 1em;
+}
+.contactForm .formBody {
+  background: #fff;
+  padding: 0px 12px;
+  overflow: hidden;
+  /*TRANSITION*/
+  transition: all 0.2s ease;
+}
+.contactForm .inputContainer {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 1%;
+  overflow: hidden;
+  background: transparent;
+  width: 80%;
+  margin-left: 8%;
+
+}
+.inputContainer2 {
+  border: 1px solid #ccc;
+  border-bottom-color: white;
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 1%;
+  overflow: hidden;
+  background: transparent;
+  width: 80%;
+  margin-left: 8%;
+  height: 70%;
+}
+.inputContainerRead {
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 1%;
+  overflow: hidden;
+  background: transparent;
+  width: 80%;
+  margin-left: 8%;
+
+}
+
+
+
+.contactForm .inputContainer .message {
+  color: #ff5c5c;
+  background: #ff5c5c;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  margin: 0;
+  line-height: 2.5em;
+  text-align: center;
+  overflow: hidden;
+  /*TRANSITION*/
+  transition: all 0.1s ease;
+}
+.contactForm .inputContainer label,
+.contactForm .inputContainer input,
+.contactForm .inputContainer textarea {
+  box-sizing: border-box;
+  padding: 0.5%;
+  font-size: 14px;
+  line-height: 1em;
+  border: none;
+  font: inherit;
+}
+.contactForm .inputContainer label {
+  display: inline-block;
+  font-size: 0.7em;
+  background: #ccc;
+  color: rgba(0, 0, 0, 0.3);
+  line-height: 1.75em;
+  border-right: 1px solid #ccc;
+  /*POSITION*/
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.contactForm .inputContainer textarea,
+.contactForm .inputContainer input {
+  width: 100%;
+  max-width: 100%;
+}
+.contactForm .inputContainer textarea {
+  margin-bottom: -5px;
+  height: 420px;
+}
+.contactForm .inputContainer input {
+  padding-left: 2%;
+}
+.contactForm .submitBtn {
+  background: #a7e3e6;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font: inherit;
+  padding: 10px 18px;
+  margin-top: 10px;
+  float: right;
+  width: auto;
+  /*TRANSITION*/
+  transition: background 0.5s ease;
+}
+.contactForm .submitBtn:hover {
+  background: #425a8e;
+}
+.contactForm.success {
+  overflow: hidden;
+}
+.contactForm.success .formHeader {
+  background: #0a8754;
+  border-color: #0a8754;
+  font-size: 0.75em;
+}
+.contactForm.success .formBody {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.contactForm.success .formBody form {
+  /*TRANSITION*/
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.contactForm .inputContainer.success {
+  border-color: #82e682;
+}
+.contactForm .inputContainer.success:after {
+  font: 1.25em/2em FontAwesome;
+  color: #82e682;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  content: '';
+}
+.contactForm .inputContainer.success label {
+  background: #82e682;
+  border-color: #82e682;
+}
+.contactForm .inputContainer.success input,
+.contactForm .inputContainer.success textarea {
+  color: #0a8754;
+}
+.contactForm .inputContainer.error {
+  border-color: #ff5c5c;
+}
+.contactForm .inputContainer.error .message {
+  width: 100%;
+}
+.contactForm .inputContainer.error:after {
+  font: 1.25em/2em FontAwesome;
+  color: #ff5c5c;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  content: '';
+}
+.contactForm .inputContainer.error label {
+  background: #ff5c5c;
+  border-color: #ff5c5c;
+}
+.contactForm .inputContainer.error input,
+.contactForm .inputContainer.error textarea {
+  color: #ff5c5c;
+}
+
+.bg-white {
+  background: #fff !important;
+  border-left: 0px;
+}
+.select {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+#datepicker {
+  width: 200px;
+  left: 50px;
+  border-radius: 4px;
+}
+#datepicker > span:hover {
+  cursor: pointer;
+}
+.datepicker .prev,
+.datepicker .next {
+  font-size: 25px !important;
+  line-height: 12px !important;
+  vertical-align: top;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: textfield;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 13.3333px Arial;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+.input-group-addon:last-child {
+  border-left: 0;
+}
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child),
+.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.bg-white {
+  background: #fff !important;
+}
+.input-group-addon {
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+.input-group-addon {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
+}
+
+.photo-video {
+  border: 1px solid blue;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 500px;
+}
+.footer {
+  position: absolute;
+  top: 90%;
+  left: 47.5%;
+}
+
+a:hover {
+  background-color: rgb(192, 213, 245);
+  color: black;
+}
+
+.previous {
+  background-color: #dadcdd;
+  color: black;
+}
+
+.next {
+  background-color: #dadcdd;
+  color: black;
+}
+
+.round {
+  border-radius: 20%;
+}
+.container_check {
+  float: right;
+  margin-top: 3%;
+  margin-right: 10%;
+}
+.read_container_check {
+  float: right;
+  margin-top: 6.5%;
+  margin-right: 10%;
+}
+.filebox input[type='file'] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.filebox label {
+  display: inline-block;
+  /*padding: 0.5em 0.75em;*/
+  margin-bottom: 1%;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: 0.25em;
+} /* named upload */
+.filebox .upload-name {
+  height: 5%;
+  margin-left: 8%;
+  display: inline-block;
+  /*padding: 0.5em 0.75em; /* label의 패딩값과 일치 */
+  margin-bottom: 1%;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #f5f5f5;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: 0.25em;
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* imaged preview */
+.filebox .upload-display {
+  /* 이미지가 표시될 지역 */
+  margin-left: 8%;
+  margin-bottom: 5px;
+}
+@media (min-width: 768px) {
+  .filebox .upload-display {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 0;
+  }
+}
+.filebox .upload-thumb-wrap {
+  /* 추가될 이미지를 감싸는 요소 */
+  display: inline-block;
+  width: 54px;
+  padding: 2px;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.filebox .upload-display img {
+  /* 추가될 이미지 */
+  display: block;
+  max-width: 100%;
+  width: 100% \9;
+  height: auto;
+}
+
+.card-text {
+  margin-left: 11%;
+  border: 1px solid #ccc;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 2%;
+  width: 40%;
+  margin-top: 5%;
+}
+
+
+.updateBtn {
+  margin-right: 40%;
+  margin-left: 10%;
+  background: #a7e3e6;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font: inherit;
+  padding: 10px 18px;
+  margin-top: 10px;
+  float: right;
+  width: auto;
+  /*TRANSITION*/
+  transition: background 0.5s ease;
+}
+.diaryupdateBtn {
+  margin-right: 50%;
+  margin-left: 10%;
+  background: #a7e3e6;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font: inherit;
+  padding: 10px 18px;
+  margin-top: 10px;
+  float: right;
+  width: auto;
+  /*TRANSITION*/
+  transition: background 0.5s ease;
+}
+
+.deleteBtn {
+  margin-left: 15%;
+  background: #a7e3e6;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font: inherit;
+  padding: 10px 18px;
+  margin-top: 10px;
+  float: right;
+  width: auto;
+  /*TRANSITION*/
+  transition: background 0.5s ease;
+}
+
+.contactForm .updateBtn:hover {
+  background: #425a8e;
+}
+.contactForm .deleteBtn:hover {
+  background: #425a8e;
+}
+.titleContainer{
+  padding-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+input[type=date]{
+  padding: 5px;
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-bottom: 10px;
+  height: 30px;
+  width: 300px;
+  border: 1px solid #eee;
+  border-radius: 15px;
+}
+.saveyourdiary{
+  font-size: 24px;
+  align-content: center;
+  font-weight: bold;
+  margin-left: 40%;
+}
+.diaryimage{
+  width: 80%;
+  height: 80%;
+}
+.outer {
+  display: flex;
+  align-items: center; /* 수직 정렬 */
+  flex-direction: row; /* default: row */
+  justify-content: center; /* flex direction에 대해서 정렬방식 선택 */
+}
+.inner {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

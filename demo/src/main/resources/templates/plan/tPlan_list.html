@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset = "UTF-8">
+<title>여행 리스트</title>
+<link rel="stylesheet" href="../../static/css/tPlan.css" th:href="@{/css/tPlan.css}">
+<link rel="stylesheet" href="../../static/css/modal.css" th:href="@{/css/modal.css}" >
+
+<script defer src="js/map.js"></script>
+<script src="js/tPlan.js"></script>
+<script src="js/modalcon.js"></script>
+<script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7e9fd3acc1c2d0f9fab3751b858e4280&libraries=services"></script>
+</head>
+<body>
+    <head>
+     <div class="head left">                   
+            <div class="menu1" id="menu">               
+                <img src="https://img.icons8.com/ultraviolet/80/000000/calendar--v2.gif" alt="Avatar" class="image">
+                    <div class="overlay">
+                      <div class="text">달 <br>력</div>
+                    </div>          
+            </div>            
+            <div class="menu2" id="menu">
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">일 <br>기</div>
+                </div>   
+              
+            </div>
+            <div class="menu3" id="menu">
+                <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">가 <br>계</div>
+                </div>   
+
+            </div>
+            <div class="menu4" id="menu">
+                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">여 <br>행</div>
+                </div>   
+           
+            </div>
+                <button type="button" class="logout" id="logout"  onclick='alert("로그아웃 하시겠습니까?")'>로그아웃</button>
+                <p class="welcome">(아이디)님 반가워요</p>
+                </div>
+                <button type="button" class="btm_image1" id="img_btn"><img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-4--v2.png" width=70px, height=70px></button>
+                <button type="button" class="btm_image1" id="img_btn"><img src="https://img.icons8.com/color/144/000000/circled-user-male-skin-type-7--v2.png" width=70px, height=70px></button>
+                <button type="button" class="btm_image2" id="img_btn"><img src="https://img.icons8.com/material/96/000000/user-group-man-man--v1.png" width=55px, height=55px > </button>
+                <button type="button" class="btm_image3" ><img src="https://img.icons8.com/office/80/000000/appointment-reminders--v2.gif" width=35px, height=35px /></button>
+                <button type="button" class="btm_image4" onclick='alert("추가할 id선택")'><img src="https://img.icons8.com/ios/100/000000/plus-2-math.png" width=35px, height=35px /></button>
+            <div class="clearbox"></div>
+        </div>     
+    </head>
+<div class="main">
+    <div class="container" >
+        <article class="contents-01-article left">
+          <div class="left-top">
+            <a href="javascript:openModal('modal1');" class="addtour">여행 추가</a>
+            
+            <h1 class="tour-title"> 여행이름 </h1><!--여행이름-->
+            <div class="period">
+              <input type="button" class="start" value="">
+              <input type="button" class="end" value="">
+              <br/>
+              <hr style="size: 2; color: #000;">
+            </div>
+            <div class="period2">
+              <div class="startd"></div>
+              <div class="endd"></div>
+            </div><!--기간-->
+          </div><!--left-top-->
+        </article> <!-- contents-01-article left -->
+        <article class="contents-01-article bottom left">
+          <div class="map-area">
+            <div id="map" style="width: 430px; height: 490px;"></div>
+          </div><!--지도-->
+          <form class="input-address-container" onsubmit="searchPlaces(); return false;">
+            <input type="text" id="input-address"/>
+            <button type="submit" class="button-search">
+                <img src="image/search-icon.png" alt="검색">
+            </button>            
+          </form><!--검색-->
+          <div class="wish-list">
+            <h4>Wish List</h4>                
+            <div id="wish-list1">
+              <div class="place">
+                  <input type="text" id="txt_1" rows="1" placeholder="가고싶은 곳"></textarea>
+                  <input type="submit" id="wish-con" onclick="submitplace1()" value="작성">
+              </div>
+              <div class="place">
+                  <div class="place-content"></div>
+
+              </div>
+          </div>
+          </div><!--가고싶은곳-->
+        </article> <!-- contents-01-article bottom left -->
+        <div class="clearbox"></div>
+    </div>
+
+    <div class="container2">
+      <article class="contents-01-article right ">
+        <div class="tour-list-cont">
+          <h2>여행목록</h2>
+          <div class="tour-list-tbl"> 
+          <table>
+              <thead>
+<!--                <th class="scope" scope="col">#</th>-->
+                <th>시작</th>
+                <th>종료</th>
+                <th>여행이름</th>
+              </thead>
+                <tbody>
+                  <tr th:each="item : ${userDiaryList}">>
+                <!--      <th scope="row">
+                  &lt;!&ndash;        <span th:text="${item.id}"></span>&ndash;&gt;
+                      </th>-->
+                      <td  th:text="${item.tplanStartDate}">  </td>
+                      <td  th:text="${item.tplanEndDate}">  </td>
+                   <!--   <a th:href="@{'/item/' + ${item.id}">-->
+                          <td  th:text="${item.tplanName}">  </td>
+                      </a>
+                  </tr>
+                </tbody>
+            </table>
+  
+          </div>
+          
+        </div>
+      </article> <!--contents-01-article right-->
+
+    </div>
+</div>
+<div id="modal">
+  <div id="dim"></div>
+  <div class="modal-con modal1">
+    <h2>새로운 여행</h2>
+      <form method="post" action="plan/addplanlist" id="formInsert">
+          <div class="con1">
+              <table class="tbl">
+                  <colgroup>
+                      <col style="width: 150px;">
+                      <col>
+                  </colgroup>
+                  <tbody>
+                  <tr>
+                      <th><label for="tplanname">여행 이름 </label></th>
+                      <td><input type="text" id="tplanname" name="tplanname"placeholder="여행이름을 입력"></td>
+                  </tr>
+                  <tr>
+                      <th><label for="startdate">시작 </label></th>
+                      <td><input type="date" id="startdate" name="startdate"></td>
+                  </tr>
+                  <tr>
+                      <th><label for="enddate">끝</label></th>
+                      <td><input type="date" id="enddate" name="enddate"></td>
+                  </tr>
+                  <tr>
+                      <th><label for="money">예산</label></th>
+                      <td><input type="text" id="money" name="money" placeholder="예산을 입력해주세요.(숫자만)"></td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+
+      </form>
+    <div class="txt-center">
+      <a href="#a" class="add"  onclick="document.getElementById('formInsert').submit();">입력</a>
+    </div>
+    <a href="javascript:;" class="close">닫기</a>
+</div><!--일정 입력-->
+</div>
+</body>
+
+</html>

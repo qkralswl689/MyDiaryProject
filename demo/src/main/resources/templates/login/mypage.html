@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset = "UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>마이페이지</title>
+<link rel="stylesheet" href="css/mypage.css" th:href="@{/css/mypage.css}" type="text/css">
+<link rel="stylesheet" href="../css/modal.css" th:href="@{/css/modal.css}" type="text/css">
+<script defer src ="js/jquery-3.5.1.js"></script>
+<script src="js/modalcon.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+</head>
+<body>
+    <head>
+        <div class="head left">
+            <div class="readmenu2" id="menu" onclick="locate_diary()">
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">일 <br />기</div>
+                </div>
+            </div>
+            <div class="menu3" id="menu">
+                <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">가 <br>계</div>
+                </div>   
+            </div>
+            <div class="menu4" id="menu">
+                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">여 <br>행</div>
+                </div>   
+            </div>   
+
+            <button type="button" class="logout" id="logout"  onclick='alert("로그아웃 하시겠습니까?")'>로그아웃</button>
+            <p class="welcome" th:text="|${loginUser.username}님 반갑습니다. |"></p>
+            </div>
+
+            <div class="clearbox"></div>
+        </div>  
+    </head>
+    <div class="main">
+        <div class="container" >
+            <article class="contents-01-article left">
+                <div class="form1">
+                    <div class="mypage-detail">
+                        <h1>마이페이지</h1>
+                        <div class="myimg">
+                           <!-- <img src="/img/t1.png" th:src="|/images/${loginUser.userimage}|" class="profileimage">-->
+                            <img th:src="|/images/${loginUser.userimage}|" class="profileimage">
+                        </div>
+                        <p th:text="|${loginUser.username} 님의 다이어리|">(아이디)님의 다이어리</p>
+                    </div>
+                    <div class="bday" th:text="|생일 : ${loginUser.userbirth}|">
+
+                    </div> 
+                    <div class="myemail" th:text="|이메일 : ${loginUser.useremail}|">
+
+                    </div>                   
+                </div>
+            </article> <!-- contents-01-article bottom left -->
+            
+            <div class="clearbox"></div>
+        </div>
+
+        <div class="container2">
+            <div class="form2" >
+                <p><a href="#a">1:1문의</a></p>
+                <p><a href="mypage/updateuser">비밀번호 변경</a></p>
+                <p><a href="#a">다이어리 삭제(탈퇴)</a></p>
+            </div>
+        </div> <!--container2-->
+
+        <div id="modal">
+            <div class="dim"></div>
+            <div class="modal-con modal1">
+                <h2>나의 정보 수정</h2>
+                <div class="con1">
+                    <table class="tbl">
+                        <colgroup>
+                            <col style="width: 150px;">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th><label for="txt1">다이어리 이름 </label></th>
+                                <td><input type="text" id="txt1" placeholder="다이어리의 이름 입력"></td>
+                            </tr>
+                            <tr>
+                                <th><label for="txt2">E-mail </label></th>
+                                <td><input type="text" id="txt2" placeholder="이메일 입력."></td>
+                            </tr>
+                            <tr>
+                                <th><label for="txt3">생일</label></th>
+                                <td><input type="date" value="1980-01-01"></td>
+                            </tr>
+                        </tbody>
+                    </table>  
+                </div>
+                <div class="txt-center">
+                <a href="#a" class="edit">수정</a>
+                </div>
+                <a href="javascript:;" class="close">닫기</a>
+            </div><!--내정보수정-->
+            <div class="modal-con modal2">
+                <h3>주의</h3>
+                <div class="msg">지금까지의 추억이 사라집니다.<br/>삭제하시겠습니까.</div>
+                <div class="txt-center">
+                    <a href="#a" class="delete">삭제</a>
+                </div>
+                <a href="#a" class="close">닫기</a>
+            </div><!--이메일 전송 -->
+        </div>
+    </body>
+
+</html>

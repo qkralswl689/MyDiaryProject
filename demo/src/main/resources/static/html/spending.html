@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>기본페이지</title>
+
+    <link rel="stylesheet" href="../css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../css/test_style.css" th:href="@{/css/test_style.css}">
+
+    <!--  <script src="js/function.js"></script>-->
+    <!--  <script defer src ="js/jquery-3.5.1.js"></script>-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
+
+</head>
+<body>
+<head>
+    <div class="head-list">
+
+        <div class="head-list left">
+            <div class="menu menu1">
+                <img src="https://img.icons8.com/ultraviolet/80/000000/calendar--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">달 <br>력</div>
+                </div>
+            </div>
+
+            <div class="menu menu2">
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">일 <br>기</div>
+                </div>
+
+            </div>
+
+            <div class="menu menu3" id="menu">
+                <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">가 <br>계</div>
+                </div>
+
+            </div>
+
+            <div class="menu menu4">
+                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">여 <br>행</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="clearbox right"></div>
+        <div class="head-list right">
+            <button type="button" class="btn_image1"></button>
+            <button type="button" class="btn_image2"></button>
+            <button type="button" class="btn_image3"></button>
+            <button type="button" class="btn_image4" onclick='alert("추가할 id선택")'></button>
+            <button type="button" class="logout" id="logout" onclick='alert("로그아웃 하시겠습니까?")'>로그아웃</button>
+            <p class="welcome">(아이디)님 반가워요</p>
+        </div>
+
+
+    </div>
+</head>
+
+
+<div class="main">
+
+    <div class="container">
+        <article class="contents-01-article left">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h1>
+                        November
+                        <button>▾</button>
+                    </h1>
+                    <p>2021</p>
+                </div>
+                <div class="calendar"><span class="day-name">Mon</span><span class="day-name">Tue</span><span
+                        class="day-name">Wed</span><span class="day-name">Thu</span><span
+                        class="day-name">Fri</span><span class="day-name">Sat</span><span class="day-name">Sun</span>
+                    <div class="day day--disabled">30</div>
+                    <div class="day day--disabled">31</div>
+                    <div class="day">1</div>
+                    <div class="day">2</div>
+                    <div class="day">3</div>
+                    <div class="day">4</div>
+                    <div class="day">5</div>
+                    <div class="day">6</div>
+                    <div class="day">7</div>
+                    <div class="day">8</div>
+                    <div class="day">9</div>
+                    <div class="day">10</div>
+                    <div class="day">11</div>
+                    <div class="day">12</div>
+                    <div class="day">13</div>
+                    <div class="day">14</div>
+                    <div class="day">15</div>
+                    <div class="day">16</div>
+                    <div class="day">17</div>
+                    <div class="day">18</div>
+                    <div class="day">19</div>
+                    <div class="day">20</div>
+                    <div class="day">21</div>
+                    <div class="day">22</div>
+                    <div class="day">23</div>
+                    <div class="day">24</div>
+                    <div class="day">25</div>
+                    <div class="day">26</div>
+                    <div class="day">27</div>
+                    <div class="day">28</div>
+                    <div class="day">29</div>
+                    <div class="day">30</div>
+                    <div class="day">31</div>
+                    <div class="day day--disabled">1</div>
+                    <div class="day day--disabled">2</div>
+                    <section class="task task--warning">Projects</section>
+                    <section class="task task--danger">Design Sprint</section>
+                    <section class="task task--primary">Product Checkup 1
+                        <div class="task__detail">
+                            <h2>Product Checkup 1</h2>
+                            <p>15-17th November</p>
+                        </div>
+                    </section>
+                    <section class="task task--info">Product Checkup 2</section>
+                </div>
+            </div> <!--calendar-->
+            <div class="clearbox"></div>
+        </article> <!-- contents-01-article left -->
+
+        <div class="test-layout">
+
+            <button class="test-button">+</button>
+
+            <table class="test-table">
+                <thead>
+                <th>예산</th>
+                </thead>
+                <tr>
+                    <td>13000000</td>
+                </tr>
+            </table>
+
+            <table border="1px">
+                <thead>
+                <th>고정지출</th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${spendingList}">
+                    <td th:text="${item.spendname">이월</td>
+                    <td th:text="${item.spending">124000</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <article class="contents-01-article bottom left">
+
+            <!--
+                <div class="photo-container">
+                <div class="title">다이어리 사진</div>
+                <p class="paragraph">
+                    Vivamus eget eros viverra risus pharetra rutrum id vitae libero. Praesent sapien urna, tempus non tincidunt vitae
+                </p>
+                </div> -->
+
+            <table border="1px">
+                <thead>
+                <th>수입</th>
+                <th></th>
+                </thead>
+
+                <tr>
+                    <td>이월</td>
+                    <td>124000</td>
+                </tr>
+                <tr>
+                    <td>월급</td>
+                    <td>123580</td>
+                </tr>
+                <tr>
+                    <td>커피</td>
+                    <td>213000</td>
+                </tr>
+                <tr>
+                    <td>치킨</td>
+                    <td>1424250</td>
+                </tr>
+                <tr>
+                    <td>피자</td>
+                    <td>123580</td>
+                </tr>
+                <tr>
+                    <td>콜라</td>
+                    <td>213000</td>
+                </tr>
+
+            </table>
+
+        </article> <!-- contents-01-article bottom left -->
+
+        <div class="clearbox"></div>
+    </div>
+
+    <div class="container2">
+        <!-- <article class="contents-01-article right ">
+            <button type="button" class="menubar" id="img_menubar"><img src="https://img.icons8.com/metro/52/000000/menu.png" width=35px, height=35px ></button>
+            <div class="search">
+                <div class="search-button">
+                    <button type="button" class="img_search-button"><img src="https://raw.githubusercontent.com/qkralswl689/goodee_F.E/main/project/images/search-512.png" width=22px, height=22px></button>
+               </div>
+                <input class="search-text" type="text" placeholder="아이디를 입력해주세요.">
+           </div>
+           <div class="clearbox"></div>
+            <div class="arrow_box1">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+            <div class="arrow_box2">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+            <div class="arrow_box1">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+           <div class="clearbox"></div>
+    </article> contents-01-article right
+    -->
+        <div class="test-table-right">
+
+            <table>
+                <thead>
+                <th>날짜</th>
+                <th>내용</th>
+                <th>현금</th>
+                <th>카드</th>
+                </thead>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="test-contents-table-total">
+            <table>
+                <thead>
+                <th>현금 지출</th>
+                <th>카드 지출</th>
+                <th>총 지출</th>
+                </thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div> <!--container2-->
+
+    <!-- <a href="#" class="previous round">&#8249;</a>
+    <a href="#" class="next round">&#8250;</a> -->
+</div>
+
+
+</body>
+
+
+</html>

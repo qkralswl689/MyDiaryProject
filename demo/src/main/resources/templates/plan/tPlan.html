@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset = "UTF-8">
+<title>여행</title>
+<link rel="stylesheet" href="../../static/css/tPlan.css" th:href="@{/static/css/tPlan.css}">
+<link rel="stylesheet" href="../../static/css/modal.css" th:href="@{/static/css/modal.css}">
+
+<script defer src="js/map.js"></script>
+<script src="js/tPlan.js"></script>
+<script src="js/modalcon.js"></script>
+<script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7e9fd3acc1c2d0f9fab3751b858e4280&libraries=services"></script>
+</head>
+<body>
+    <head>
+     <div class="head left">                   
+            <div class="menu1" id="menu">               
+                <img src="https://img.icons8.com/ultraviolet/80/000000/calendar--v2.gif" alt="Avatar" class="image">
+                    <div class="overlay">
+                      <div class="text">달 <br>력</div>
+                    </div>          
+            </div>            
+            <div class="menu2" id="menu">
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">일 <br>기</div>
+                </div>   
+              
+            </div>
+            <div class="menu3" id="menu">
+                <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">가 <br>계</div>
+                </div>   
+
+            </div>
+            <div class="menu4" id="menu">
+                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                  <div class="text">여 <br>행</div>
+                </div>   
+           
+            </div>
+                <button type="button" class="logout" id="logout"  onclick='alert("로그아웃 하시겠습니까?")'>로그아웃</button>
+                <p class="welcome">(아이디)님 반가워요</p>
+                </div>
+                <button type="button" class="btm_image1" id="img_btn"><img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-4--v2.png" width=70px, height=70px></button>
+                <button type="button" class="btm_image1" id="img_btn"><img src="https://img.icons8.com/color/144/000000/circled-user-male-skin-type-7--v2.png" width=70px, height=70px></button>
+                <button type="button" class="btm_image2" id="img_btn"><img src="https://img.icons8.com/material/96/000000/user-group-man-man--v1.png" width=55px, height=55px > </button>
+                <button type="button" class="btm_image3" ><img src="https://img.icons8.com/office/80/000000/appointment-reminders--v2.gif" width=35px, height=35px /></button>
+                <button type="button" class="btm_image4" onclick='alert("추가할 id선택")'><img src="https://img.icons8.com/ios/100/000000/plus-2-math.png" width=35px, height=35px /></button>
+            <div class="clearbox"></div>
+        </div>     
+    </head>
+<div class="main">
+    <div class="container" >
+        <article class="contents-01-article left">
+          <div class="left-top">
+            <div class="listcall">
+                <a th:href="/tPlan_list"><img class="tour-list-icon" src="../../static/image/listbutton.png" width="35px" height="35px">
+                </a>
+            </div>
+            
+            <h1 class="tour-title"> 제주 </h1><!--여행이름-->
+            <div class="period">
+              <input type="button" class="start" >
+              <input type="button" class="end" >
+              <br/>
+              <hr>
+            </div>
+            <div class="period2">
+              <div class="startd">9/20</div>
+              <div class="endd">9/28</div>
+            </div><!--기간-->
+          </div><!--left-top-->
+        </article> <!-- contents-01-article left -->
+        <article class="contents-01-article bottom left">
+          <div class="left-bottom">
+            <div class="map-area">
+              <div id="map" style="width: 410px; height: 490px;"></div>
+            </div><!--지도-->
+            <form class="input-address-container" onsubmit="searchPlaces(); return false;">
+              <input type="text" id="input-address"/>
+              <button type="submit" class="button-search">
+                  <img src="image/search-icon.png" alt="검색">
+              </button>            
+            </form><!--검색-->
+            <div class="wish-list">
+              <h4>Wish List</h4>                
+              <div id="wish-list1">
+                <div class="place">
+                    <input type="text" id="txt_1" rows="1" placeholder="가고싶은 곳">
+                    <input type="submit" id="wish-con"  onclick="submitplace1()" value="작성">
+                </div>
+                <div class="place">
+                    <div class="place-content">박물관</div>
+
+                </div>
+            </div>
+            
+            </div><!--가고싶은곳-->
+          </div>
+
+        </article> <!-- contents-01-article bottom left -->
+        <div class="clearbox"></div>
+    </div>
+
+    <div class="container2">
+      <article class="contents-01-article right ">
+          <a href="javascript:openModal('modal1');" class="schedule">일정 입력</a>
+        <div class="scheduler-area">
+          <table class="scheduler">
+            <colgroup>
+                <col style="width: 250px;">
+                <col style="width: 300px;">
+                <col>
+            </colgroup>
+            <thead>
+            <th>날짜</th>
+            <th>내용</th>
+            <th>메모</th>
+            </thead>
+            <tbody>
+              <tr th:each="item : ${scheduleList}">
+                <td th:text="${item.startdatelist}">19.09.20</td>
+                <td th:text="${item.contentlist}">한라산</td>
+                <td th:text="${item.memolist}">성판악코스</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article> <!--contents-01-article right-->
+      <article class="contents-01-article bottom right">        
+        <div class="cash">
+          <a href="javascript:openModal('modal2');" class="cash-con">가계 입력</a>
+
+          <span>식비 고기국수 10000원</span>
+          <span>관람료 주상절리 5000원</span>
+        </div><!--가계-->
+        <div class="cash-budget">예산 :500000</div><!--예산-->
+
+        <div class="cash-change">남은돈 :485000</div><!--남은돈 표시-->
+      </article><!--contents-01-article bottom right -->
+    </div> <!--container2-->
+</div>
+<div id="modal">
+  <div id="dim"></div>
+  <div class="modal-con modal1">
+    <h2>일정</h2>
+      <form method="post" action="plan/schedulerlist">
+          <div class="con1">
+              <table class="tbl">
+                  <colgroup>
+                      <col style="width: 150px;">
+                      <col>
+                  </colgroup>
+                  <tbody>
+                  <tr>
+                      <th><label for="startdatedetail">일정</label></th>
+                      <td><input type="date" id="startdatedetail" name="startdatedetail"></td>
+                  </tr>
+                  <tr>
+                      <th><label for="contents1">내용 </label></th>
+                      <td><input type="text" id="contents1" name="contents1" placeholder="내용 입력"></td>
+                  </tr>
+                  <tr>
+                      <th><label for="memo">메모</label></th>
+                      <td><input type="text" id="memo" name="memo" placeholder="메모를 입력해주세요"></td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </form>
+    <div class="txt-center">
+    <a href="#a" class="add">추가</a>
+    </div>
+    <a href="javascript:;" class="close">닫기</a>
+</div><!--일정 입력-->
+
+<div class="modal-con modal2">
+  <div class="con2">
+      <form method="post" action="/post">
+          <table class="tbl">
+              <colgroup>
+                  <col style="width: 150px;">
+                  <col>
+              </colgroup>
+              <tbody>
+              <tr>
+                  <th><label for="txt1">금액 </label></th>
+                  <td><input type="text" id="txt1" placeholder="금액을 입력해 주세요."></td>
+              </tr>
+              <tr id="category-v">
+                  <th><label for="category">카테고리 </label></th>
+                  <td><input type="radio" id="traffic" name="category" value="traffic" onchange="setCategory()">
+                      <label for="traffic">교통비</label>
+                      <input type="radio" id="food" name="category" value="food" onchange="setCategory()">
+                      <label for="food">식비</label>
+                      <input type="radio" id="admission" name="category" value="admission" onchange="setCategory()">
+                      <label for="admission">관람료</label>
+                      <input type="radio" id="etc" name="category" value="etc" checked="checked" onchange="setCategory()">
+                      <label for="etc">기타</label></td>
+              </tr>
+              <tr>
+                  <th><label for="txt3">내용</label></th>
+                  <td><input type="text" id="txt3" placeholder="내용을 입력해주세요"></td>
+              </tr>
+              </tbody>
+          </table>
+
+      </form>
+  </div>
+  <div class="txt-center">
+  <a href="#a" class="add">입력</a>
+  </div>
+  <a href="javascript:;" class="close">닫기</a>
+</div><!--가계 입력-->
+
+
+</div>
+</body>
+
+</html>

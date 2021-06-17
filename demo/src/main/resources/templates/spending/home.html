@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:https="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>기본페이지</title>
+
+    <link rel="stylesheet" href="../css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="../css/test_style.css" th:href="@{/css/test_style.css}">
+    <link rel="stylesheet" href="css/modal_spending.css" th:href="@{css/modal_spending.css}">
+    <link rel="stylesheet" href="css/modal.css" th:href="@{css/modal.css}">
+    <link rel="stylesheet" href="css/base1_icon.css" th:href="@{css/base1_icon.css}">
+
+<!--    <link href="../fullcalendar/main.css" th:href=@{"fullcalendar/main.css"} rel='stylesheet' />
+    <script src='fullcalendar/main.js'></script>-->
+
+<!--    <link rel="stylesheet" href="css/fullcalendar.min.css" th:href="@{css/fullcalendar.min.css}">
+    <link rel="stylesheet" href="css/bas2_private.css" th:href="@{css/bas2_private.css}">-->
+
+    <!-- fullcalender Css -->
+<!--    <link type="text/css" th:href="@{fullcalendar-4.4.2/packages/core/main.css}" rel="stylesheet" />
+    <link type="text/css" th:href="@{fullcalendar-4.4.2/packages/daygrid/main.css}" rel="stylesheet" />
+    <link type="text/css" th:href="@{fullcalendar-4.4.2/packages/timegrid/main.css}" rel="stylesheet" />
+    <link type="text/css" th:href="@{fullcalendar-4.4.2/packages/list/main.css}" rel="stylesheet" />
+
+    &lt;!&ndash; fullcalender JavaScript &ndash;&gt;
+    <script th:src="@{fullcalendar-4.4.2/packages/core/main.js}"></script>
+    <script th:src="@{fullcalendar-4.4.2/packages/daygrid/main.js}"></script>
+    <script th:src="@{fullcalendar-4.4.2/packages/timegrid/main.js}"></script>
+    <script th:src="@{fullcalendar-4.4.2/packages/list/main.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/event/schedule.js}"></script>-->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+    <script src="js/modalcon_spending.js"></script>
+
+<!--    <script src="js/fullcalendar.min.js"></script>-->
+
+
+<!--    모달용 css, js-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />-->
+
+    <!--  <script src="js/function.js"></script>-->
+    <!--  <script defer src ="js/jquery-3.5.1.js"></script>-->
+<!--    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
+
+   <!-- <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>-->
+
+</head>
+<body>
+<div id="modal">
+    <div id="dim"></div> <!--모달창 띄울때 까만 배경-->
+    <div class="modal-con modal1">
+        <h3>가계부 입력 창</h3>
+        <form method="post" action="spending/save">
+            <div class="con1">
+                <table class="tbl">
+                    <tr>
+                        <th><label><br>값<br></label></th>
+                        <td>
+                            <input type="radio" id="value_spending" name="spendingvalue" value="spending" onchange="setSpendingValue()">고정지출
+                            <input type="radio" id="value_expenditure" name="spendingvalue" value="expenditure" onchange="setSpendingValue()" checked="checked">지출
+                            <input type="radio" id="value_plus" name="spendingvalue" value="plus" onchange="setSpendingValue()">수입
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th><label for="spendingname">목적</label></th>
+                        <td><input type="text" id="spendingname" name="spendingname" placeholder="ex) 관리비, 용돈, 월급"></td>
+                    </tr>
+
+                    <tr>
+                        <th><label for="spendingmoney">금액</label></th>
+                        <td><input type="text" id="spendingmoney" name="spendingmoney" placeholder="10000원"></td>
+                    </tr>
+
+                    <tr>
+                        <th><label for="spendingdate">날짜</label></th>
+                        <td><input type="date" id="spendingdate" name="spendingdate" th:value="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')}"></td>
+                    </tr>
+
+                    <tr id="iscard_value">
+                        <th>카드 / 현금</th>
+                        <td>
+                            <input type="radio" name="iscard" value="card">카드
+                            <input type="radio" name="iscard" value="money">현금
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="txt-center">
+                <button type="submit" class="buttondiary">다이어리 등록</button>
+            </div>
+            <a href="javascript:;" class="close"></a>
+
+        </form>
+    </div>
+
+</div>
+<head>
+    <div class="head left">
+        <div class="readmenu2" id="menu" onclick="locate_diary()">
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">일 <br />기</div>
+                </div>
+        </div>
+      <div class="menu3" id="menu"  onclick="locate_spending()">
+            <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image" />
+            <div class="overlay">
+                <div class="text">가 <br />계</div>
+            </div>
+        </div>
+
+        <div class="menu4" id="menu">
+            <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
+            <div class="overlay">
+                <div class="text">여 <br />행</div>
+            </div>
+        </div>
+    </div>
+
+        <div class="clearbox right"></div>
+        <div class="head right">
+            <div class="clearboxprofile"></div>
+            <p class="welcome" th:text="| ${loginUser.username}님 반갑습니당. |"></p>
+            <button type="button" class="btm_image1" id="img_btn">
+                <img th:src="|/images/${loginUser.userimage}|" onclick="locate_mypage()" class="profileimage" width="70px," height="70px" />
+            </button>
+        </div>
+
+
+    </div>
+</head>
+
+<div class="main">
+
+    <div class="container">
+        <article class="contents-01-article left">
+            <div class="calendar">
+                <div id="calendar"></div>
+            </div>
+<!--            <div class="calendar-container">-->
+<!--                <div class="calendar-header">-->
+<!--                    <h1>-->
+<!--                        November-->
+<!--                        <button>▾</button>-->
+<!--                    </h1>-->
+<!--                    <p>2021</p>-->
+<!--                </div>-->
+<!--                <div class="calendar"><span class="day-name">Mon</span><span class="day-name">Tue</span><span-->
+<!--                        class="day-name">Wed</span><span class="day-name">Thu</span><span-->
+<!--                        class="day-name">Fri</span><span class="day-name">Sat</span><span class="day-name">Sun</span>-->
+<!--                    <div class="day day&#45;&#45;disabled">30</div>-->
+<!--                    <div class="day day&#45;&#45;disabled">31</div>-->
+<!--                    <div class="day">1</div>-->
+<!--                    <div class="day">2</div>-->
+<!--                    <div class="day">3</div>-->
+<!--                    <div class="day">4</div>-->
+<!--                    <div class="day">5</div>-->
+<!--                    <div class="day">6</div>-->
+<!--                    <div class="day">7</div>-->
+<!--                    <div class="day">8</div>-->
+<!--                    <div class="day">9</div>-->
+<!--                    <div class="day">10</div>-->
+<!--                    <div class="day">11</div>-->
+<!--                    <div class="day">12</div>-->
+<!--                    <div class="day">13</div>-->
+<!--                    <div class="day">14</div>-->
+<!--                    <div class="day">15</div>-->
+<!--                    <div class="day">16</div>-->
+<!--                    <div class="day">17</div>-->
+<!--                    <div class="day">18</div>-->
+<!--                    <div class="day">19</div>-->
+<!--                    <div class="day">20</div>-->
+<!--                    <div class="day">21</div>-->
+<!--                    <div class="day">22</div>-->
+<!--                    <div class="day">23</div>-->
+<!--                    <div class="day">24</div>-->
+<!--                    <div class="day">25</div>-->
+<!--                    <div class="day">26</div>-->
+<!--                    <div class="day">27</div>-->
+<!--                    <div class="day">28</div>-->
+<!--                    <div class="day">29</div>-->
+<!--                    <div class="day">30</div>-->
+<!--                    <div class="day">31</div>-->
+<!--                    <div class="day day&#45;&#45;disabled">1</div>-->
+<!--                    <div class="day day&#45;&#45;disabled">2</div>-->
+<!--                    <section class="task task&#45;&#45;warning">Projects</section>-->
+<!--                    <section class="task task&#45;&#45;danger">Design Sprint</section>-->
+<!--                    <section class="task task&#45;&#45;primary">Product Checkup 1-->
+<!--                        <div class="task__detail">-->
+<!--                            <h2>Product Checkup 1</h2>-->
+<!--                            <p>15-17th November</p>-->
+<!--                        </div>-->
+<!--                    </section>-->
+<!--                    <section class="task task&#45;&#45;info">Product Checkup 2</section>-->
+<!--                </div>-->
+<!--            </div> &lt;!&ndash;calendar&ndash;&gt;-->
+            <div class="clearbox"></div>
+        </article> <!-- contents-01-article left -->
+
+        <div class="test-layout">
+
+            <button class="test-button" onclick="javascript:openModal('modal1');">+</button>
+
+
+            <table class="test-table">
+                <thead>
+                <th>예산</th>
+                </thead>
+                <tr>
+                    <td th:text="${totalValue}">130000</td>
+                </tr>
+            </table>
+
+            <table border="1px">
+                <thead>
+                <th>고정지출</th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${spendingList}">
+                    <td th:text="${item.spendname}"> 이월 </td>
+                    <td th:text="${item.spending}"> 124000 </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <article class="contents-01-article bottom left">
+
+            <!--
+                <div class="photo-container">
+                <div class="title">다이어리 사진</div>
+                <p class="paragraph">
+                    Vivamus eget eros viverra risus pharetra rutrum id vitae libero. Praesent sapien urna, tempus non tincidunt vitae
+                </p>
+                </div> -->
+
+            <table border="1px">
+                <thead>
+                <th>수입</th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${plusList}">
+                    <td th:text="${item.plusname}"> 월급 </td>
+                    <td th:text="${item.plusmoney}"> 2400 </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </article> <!-- contents-01-article bottom left -->
+
+        <div class="clearbox"></div>
+    </div>
+
+    <div class="container2">
+        <!-- <article class="contents-01-article right ">
+            <button type="button" class="menubar" id="img_menubar"><img src="https://img.icons8.com/metro/52/000000/menu.png" width=35px, height=35px ></button>
+            <div class="search">
+                <div class="search-button">
+                    <button type="button" class="img_search-button"><img src="https://raw.githubusercontent.com/qkralswl689/goodee_F.E/main/project/images/search-512.png" width=22px, height=22px></button>
+               </div>
+                <input class="search-text" type="text" placeholder="아이디를 입력해주세요.">
+           </div>
+           <div class="clearbox"></div>
+            <div class="arrow_box1">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+            <div class="arrow_box2">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+            <div class="arrow_box1">
+                <h1 class="logo">말풍선 삽입</h1>
+            </div>
+           <div class="clearbox"></div>
+    </article> contents-01-article right
+    -->
+        <div class="test-table-right">
+
+            <table>
+                <thead>
+                <th>날짜</th>
+                <th>내용</th>
+                <th>현금</th>
+                <th>카드</th>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${minusList}">
+                    <td th:text="${item.minusdate}"> 월급 </td>
+                    <td th:text="${item.minusname}"> 2400 </td>
+                    <td th:text="${item.minusmoney}"> 2400 </td>
+                    <td th:text="${item.iscard}"> 2400 </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="test-contents-table-total">
+            <table>
+                <thead>
+                <th>현금 지출</th>
+                <th>카드 지출</th>
+                <th>총 지출</th>
+                </thead>
+                <tr>
+                    <td th:text="${moneyValue}"></td>
+                    <td th:text="${cardValue}"></td>
+                    <td th:text="${minusValue}"></td>
+                </tr>
+            </table>
+        </div>
+    </div> <!--container2-->
+
+    <!-- <a href="#" class="previous round">&#8249;</a>
+    <a href="#" class="next round">&#8250;</a> -->
+</div>
+
+
+</body>
+<script src="js/path_locate.js"></script>
+</html>

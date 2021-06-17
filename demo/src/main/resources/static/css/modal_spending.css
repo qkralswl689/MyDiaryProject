@@ -1,0 +1,226 @@
+#dim{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.8);
+    z-index:990;
+    display: none;
+}
+
+input[type=text], input[type=password] {
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 300px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+}
+
+input::placeholder { color: #ccc;}
+
+input:focus {
+    outline: none;
+    border: 1px solid #a0a0a0;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #a0a0a0;
+}
+
+.modal1{
+    width:600px;
+    background-color:#fff;
+    border-radius:10px;
+    padding:40px 30px 30px;
+    box-sizing:border-box;
+    display:block;
+    color:#000;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:990;
+    display: none;
+}
+
+.modal2{
+    width:500px;
+    background-color:#fff;
+    border-radius:10px;
+    padding:40px 30px 30px;
+    box-sizing:border-box;
+    display:block;
+    color:#000;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:990;
+    display: none;
+}
+
+.modal3{
+    width:400px;
+    background-color:#fff;
+    border-radius:10px;
+    padding:40px 30px 30px;
+    box-sizing:border-box;
+    display:block;
+    color:#000;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:990;
+    display: none;
+}
+
+.modal4{
+    width:400px;
+    background-color:#fff;
+    border-radius:10px;
+    padding:40px 30px 30px;
+    box-sizing:border-box;
+    display:block;
+    color:#000;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index:990;
+    display: none;
+}
+
+.modal1.active,.modal2.active,.popup3.active,
+.popup4.active{
+    display:block;
+}
+
+
+.modal1 h2{
+    padding: 0 0 40px;
+    border-bottom: 2px solid #444;
+    font-weight: normal;
+    font-size: 35px;
+    color:#222;
+    text-align: center;
+    line-height: 100%;
+}
+
+input[type=date]{
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 300px;
+    border: 1px solid #eee;
+    border-radius: 15px;
+}
+
+.close{
+left:550px;
+    position:absolute;
+    right: 20px;
+    top: 20px;
+    width:30px;
+    height: 30px;
+    background: url(../image/close-btn.png) no-repeat;
+    color: transparent;
+}
+caption{
+    display: none;
+}
+
+.modal1 .con1{
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+table.tbl th,
+table.tbl td{
+    padding: 0 0 10px;
+}
+table.tbl th{
+    padding-top: 15px;
+    vertical-align: top;
+    font-size: 18px;
+    color:#222;
+    text-align: left;
+    font-weight: normal;
+}
+
+.txt-center{
+    text-align: center;
+    padding: 20px 0 0;
+}
+.join{
+    display: inline-block;
+    width:150px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    text-decoration:none;
+    top:10px;
+    left:0px;
+}
+.buttondiary{
+display: inline-block;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #333;
+    text-align: center;
+    border-radius: 2px;
+    /* text-decoration: none; */
+    top: 10px;
+    left: 0px;
+}
+
+h3{
+    padding: 0 0 40px;
+    font-weight: normal;
+    font-size: 30px;
+    color:#222;
+    text-align: center;
+    line-height: 100%;
+}
+
+.search-id, .search-pw{
+    display: inline-block;
+    width:150px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #333;
+    text-align: center;
+    border-radius: 2px;
+    text-decoration:none;
+}
+
+.msg{
+    font-weight: normal;
+    font-size: 20px;
+    color:#222;
+    text-align: center;
+    line-height: 100%;
+}
+.edit,.delete{
+    display: inline-block;
+    width:150px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background: #333;
+    text-align: center;
+    border-radius: 2px;
+    text-decoration:none;
+}
+
+table.tbl td{
+    padding-top: 15px;
+    color:#222;
+    font-weight: normal;
+}

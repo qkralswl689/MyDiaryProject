@@ -1,0 +1,546 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@charset "utf-8";
+/* *{
+    box-sizing: border-box;
+    margin:0px;
+} */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* coustom css */
+
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.main{
+    display:contents;
+    float: right;
+}
+.container{
+    width: 50%;
+    height: 100%;
+    background-image: url(https://raw.githubusercontent.com/yeanakim-hi/ProjDiary/main/ri.png);
+    background-repeat: no-repeat;
+    background-size:95% 80%;
+    float: left;
+    position:absolute;
+    top :9% ;
+}
+.container2{
+    width: 50%;
+    height: 100%;
+    background-image: url(https://raw.githubusercontent.com/yeanakim-hi/ProjDiary/main/%EC%99%BC%EC%AA%BD.png);
+    float: left;
+    background-size: 95% 80%;
+    background-repeat: no-repeat;
+    position:absolute;
+    right : 10px;
+    top :9% ;
+}
+.clearbox{
+  clear:both;
+} /* 컨텐츠  float 밑에 따라오는 컨텐츠 없도록 설정*/
+#menu{
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 80px;
+    background-size: 100% 100%;
+    display: flex;
+    float: left;
+    position: relative;
+  }
+
+.text {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgb(243, 241, 241);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+}
+
+.menu1:hover .overlay {
+  opacity: 1;
+}
+
+.menu2:hover .overlay {
+  opacity: 1;
+}
+
+.menu3:hover .overlay {
+  opacity: 1;
+}
+
+.menu4:hover .overlay {
+  opacity: 1;
+}
+#img_btn{
+
+  float :right;
+  border-radius :100%;
+  overflow: hidden;
+  border: 0px;
+}
+.btm_image1{
+  margin-top: 20px;
+  margin-right: 10px;
+  object-fit: cover;
+  background-color: white;
+}
+.btm_image2{
+  margin-top: 25px;
+  opacity : 0.7;
+  margin-right: 20px;
+}
+.btm_image3{
+  margin-right: 20px;
+  margin-top: 40px;
+  float :right;
+  background-color: white;
+  border: 0px;
+}
+.btm_image4{
+  opacity : 0.7;
+  margin-right: 10px;
+  margin-top: 40px;
+  float :right;
+  background-color: white;
+  border: 0px;
+}
+.logout{
+  float :right;
+  margin-left: 20px;
+  margin-right: 120px;
+  margin-top: 50px;
+  text-align: center;
+}
+.welcome{
+  float : right;
+  margin-left: 10px;
+  padding-top: 50px;
+  text-align: center;
+}
+.menubar{
+  float: right;
+  margin-top: 30px;;
+  background-color: white;
+  border:  white;
+  opacity: 0.5;
+}
+
+#img_menubar{
+  background-color:transparent;
+}
+
+.contents-01-article{
+	padding: 50px 0;
+
+} /* 왼쪽정렬, 화면 50% 영역을 지정,안쪽여백 위아래 50px 오왼 0*/
+.contents-01-article.left{
+  margin-right: 50px;
+  width: 80%;
+  float: left;
+  padding-bottom: 10px;
+  padding-left: 50px;
+}
+
+.contents-01-article.bottom.left{
+	  margin-right: 50px;
+    width: 80%;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+.contents-01-article.right{
+  margin-right: 100px;
+  width: 80%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 50px;
+  float :right;
+}
+
+.contents-01-article.bottom.right{
+  margin-right: 100px;
+  width: 80%;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  float :right;
+}
+.left-bottom{
+  width: 100%;
+  height: 500px;
+  top: 300px;
+}
+
+.left-top{
+  width: 100%;
+  height: 35%;
+  overflow: hidden;
+  padding-top: 20px;
+}
+
+.tour-list-icon{
+  border-radius :100%;
+  overflow: hidden;
+  border: 0px;
+  float:left;
+  background-color:transparent;
+}
+.addtour{
+  right: 20px;
+  top: 20px;
+  width:30px;
+  height: 30px;
+  background: url(../image/add.png) no-repeat;
+  color: transparent;
+  float:left;
+
+}
+
+.tour-title{
+  font-weight: normal;
+  font-size: 35px;
+  color:#222;
+  text-align: center;
+  line-height: 100%;
+  padding-bottom: 20px;
+}
+
+.period{
+  width: 80%;
+  height: 20px;
+  margin: 0 10%;
+}
+.period2{
+  width: 85%;
+  height: 20px;
+  margin-left: 8%;
+  margin-top: 5px;
+}
+.period hr{
+  size: 2;
+  color: #000;
+  margin: -3px;
+}
+
+.start,.end{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border-color: transparent;
+  background-color: #777;
+  color:white;
+}
+.startd, .endd{
+  width:50px;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  top: 22px;
+}
+.start,.startd{
+  float: left;
+}
+.end,.endd{
+  float: right;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+.map-area{
+  width: 410px;
+  height: auto;
+  background-color: aquamarine;
+  float: left;
+}
+
+.input-address-container{
+  position:absolute;
+  top:700px;
+  left:160px;
+  box-shadow:0px 0px 5px rgba(0,0,0,0.5);
+}
+
+form input[type=text]{
+  display:block;
+  width:300px;
+  height:36px;
+  box-sizing:border-box;
+  border:none;
+  border-radius:5px;
+  padding: 5px;
+  margin: 0;
+}
+
+.button-search{
+  width:26px;
+  height:26px;
+  background:none;
+  border:0;
+  padding:0;
+  position:absolute;
+  right:5px;
+  top:5px;
+}
+
+.button-search img{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.wish-list{
+  padding-left: 20px;
+  float: left;
+  width:300px;
+  height: 500px;
+}
+
+.wish-list h4{
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+#txt_1{
+  width: 250px;
+  margin-right: 5px;
+}
+
+.place textarea::placeholder{
+  font-size: 20px;
+}
+
+
+
+#wish-con{
+  position: absolute;
+  margin: 2px 5px 0 0;
+  width: 40px;
+  height: 40px;
+  border: hidden;
+  border-radius: 5px;
+  float: left;
+}
+
+.place-content{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.tour-list-cont{
+  width: 100%;
+  margin-top: 40px;
+  float: center;
+}
+.tour-list-tbl{
+  height: 630px;
+  overflow: scroll;
+}
+.tour-list-cont h2{
+  font-weight: normal;
+  font-size: 30px;
+  color:#222;
+  text-align: center;
+  line-height: 100%;
+  padding-bottom: 30px;
+}
+.tour-list-cont table{
+  width: 100%;
+  text-align: center;
+}
+.tour-list-cont th{
+  position: sticky;
+  top: 0px;
+  font-size: 20px;
+  padding: 15px;
+  background-color: #555;
+  color: #ddd;
+}
+
+.tour-list-cont td{
+  font-size:20px;
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+
+.go, .edit_c, .delete{
+  width: 20px;
+  height: 20px;
+  color: transparent;
+  padding-left: 5px;
+}
+.go{
+  background: url(../image/go.png);
+  background-size: cover;
+}
+.edit_c{
+  background: url(../image/pencil.png);
+  background-size: cover;
+}
+.delete{
+  background: url(../image/delete.png);
+  background-size: cover;
+}
+.schedule{
+  margin-top: 20px;
+  margin-bottom: 5px;
+  width:30px;
+  height: 30px;
+  background: url(../image/add.png) no-repeat;
+  color: transparent;
+  float: right;
+}
+
+.scheduler-area{
+  width: 100%;
+  height: 450px;
+  margin-top: 20px;
+  overflow: scroll;
+}
+
+.scheduler{
+  width: 100%;
+  text-align: center;
+}
+
+.scheduler th{
+  position: sticky;
+  top: 0px;
+  font-size: 20px;
+  padding: 15px;
+  background-color: #555;
+  color: #ddd;
+  border: #eee 1px solid;
+}
+.scheduler td{
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+  height: 15px;
+}
+
+.cash{
+  height: 150px;
+  background-color: #ddd;
+  padding:10px;
+}
+.cash span{
+  margin-left: 10px;
+}
+.cash-con{
+  right: 20px;
+  top: 20px;
+  width:30px;
+  height: 30px;
+  background: url(../image/add.png) no-repeat;
+  color: transparent;
+  float: right;
+}
+.cash div{
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.cash-budget{
+  margin-top: 10px;
+  width: 200px;
+  float: left;
+  font-size: 25px;
+}
+
+.cash-change{
+  margin-top: 10px;
+  width: 200px;
+  float:right;
+  font-size: 25px;
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>개인일기장 read</title>
+    <link rel="stylesheet" th:href="@{/css/diary.css}" href="base2_private.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <script
+            type="text/javascript"
+            th:src="@{/libs/smarteditor/js/service/HuskyEZCreator.js}"
+            src="libs/smarteditor/js/service/HuskyEZCreator.js"
+            charset="utf-8"
+    ></script>
+    <script type="text/javascript" th:src="@{//code.jquery.com/jquery-1.11.0.min.js}" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+</head>
+<body>
+<!--
+postFile : [[${postFile}]]
+<hr>
+post : [[${post}]]
+-->
+
+<div class="head">
+    <div class="head left">
+        <div class="readmenu2" id="menu">
+            <a  class="menu3" onclick="location.href='/list'" >
+                <img src="https://img.icons8.com/office/80/000000/bookmark--v2.gif" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">일 <br />기</div>
+                </div>
+            </a>
+        </div>
+        <div class="menu3" id="menu">
+            <a  class="menu3" onclick="location.href='/spending'" >
+                <img src="https://img.icons8.com/ios/100/4a90e2/calculator--v2.gif" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">가 <br />계</div>
+                </div>
+            </a>
+        </div>
+        <div class="menu4" id="menu">
+            <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
+            <div class="overlay">
+                <div class="text">여 <br />행</div>
+            </div>
+        </div>
+    </div>
+    <!--head left-->
+    <div class="head right">
+        <div class="clearboxprofile"></div>
+        <p class="welcome" th:text="| ${loginUser.username}님 반갑습니당. |"></p>
+        <button type="button" class="btm_image1" id="img_btn">
+            <img th:src="|/images/${loginUser.userimage}|" class="profileimage" width="70px," height="70px" />
+        </button>
+    </div>
+
+        <div class="clearbox"></div>
+    </div>
+    <!--head rignt-->
+</div>
+<!--head-->
+<div class="main">
+    <div class="container">
+        <div class="main_left_box">
+            <article class="contents-01-article left">
+                <div class="outer">
+                    <div class="inner">
+                    <img th:src="@{'/diaryimg/' + ${postFile.getFilename()}}" class="diaryimage" align="center">
+                    </div>
+                </div>
+            </article>
+            <!-- contents-01-article left -->
+            <div class="clearbox"></div>
+        </div>
+        <!--main_left_box-->
+    </div>
+    <!--container-->
+    <div class="container2">
+        <div class="main_right_box">
+            <article class="contents-01-article right">
+
+                <label class="read_container_check" >일기를 공유합니다.
+                    <input th:type="checkbox" th:filed="${post.ckshare}" name="ckshare" id = "ckshare"/>
+                </label>
+
+                <div class="card-text">
+                    <p>작성 날짜 : <small class="text-muted" th:text="${post.createdDate}"></small></p>
+                </div>
+
+                <div class="clearbox"></div>
+            </article>
+            <!--contents-01-article right-->
+            <div class="clearbox"></div>
+            <article class="contents-01-article right bottom">
+                <div id="contactForm" class="contactForm">
+                    <div id="formBody" class="formBody">
+                        <form action="/post" method="post" name="contactForm" enctype="multipart/form-data">
+                            <div class="inputContainer">
+                                <label for="userName">
+                                    <i class="fa fa-lg fa-fw fa-user"></i>
+                                </label>
+                                <div class="titleContainer" th:text="${post.title}" name="title" id="userName" type="text"></div>
+                            </div>
+
+                            <!--inputContainer-->
+                            <div class="inputContainerRead">
+                                <textarea th:text="${post.content}" name="content" id="txtContent" rows="23" style="width: 92%"></textarea>
+
+
+                                <!--inputContainer-->
+
+                            </div>
+
+
+                        <!--formBody-->
+                    </div>
+                </div>
+            </article>
+            <!--contents-01-article bottom right-->
+            <div class="clearbox"></div>
+        </div>
+        <!--main_right_box-->
+    </div>
+    <!--container2-->
+    <div class="clearbox"></div>
+</div>
+<!--main-->
+
+</body>
+<script>
+    function locate_spending(){ // onclick="locate_spending" 추가
+        location.href="spending";
+    }
+    function locate_diary(){ // onclick="locate_diary" 추가
+        location.href="diary";
+    }
+</script>
+<script>
+    function save() {
+        oEditors.getById['txtContent'].exec('UPDATE_CONTENTS_FIELD', []);
+        //스마트 에디터 값을 텍스트컨텐츠로 전달
+        var content = document.getElementById('smartEditor').value;
+        alert(document.getElementById('txtContent').value);
+        // 값을 불러올 땐 document.get으로 받아오기
+        return;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        var fileTarget = $('.filebox .upload-hidden');
+
+        fileTarget.on('change', function () {
+            // 값이 변경되면
+            if (window.FileReader) {
+                // modern browser
+                var filename = $(this)[0].files[0].name;
+            } else {
+                // old IE
+                var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+            }
+            // 추출한 파일명 삽입
+            $(this).siblings('.upload-name').val(filename);
+        });
+    });
+</script>
+<script>
+    //preview image
+    var imgTarget = $('.preview-image .upload-hidden');
+    imgTarget.on('change', function () {
+        var parent = $(this).parent();
+        parent.children('.upload-display').remove();
+
+        if (window.FileReader) {
+            //image 파일만
+            if (!$(this)[0].files[0].type.match(/image\//)) return;
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var src = e.target.result;
+                parent.prepend(
+                    '<div class="upload-display"><div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div></div>',
+                );
+            };
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            $(this)[0].select();
+            $(this)[0].blur();
+            var imgSrc = document.selection.createRange().text;
+            parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+            var img = $(this).siblings('.upload-display').find('img');
+            img[0].style.filter =
+                "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + '")';
+        }
+    });
+</script>
+<!-- textarea 밑에 script 작성하기 -->
+<script id="smartEditor" type="text/javascript">
+    var oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: 'txtContent', //textarea ID 입력
+        sSkinURI: '/libs/smarteditor/SmartEditor2Skin.html', //martEditor2Skin.html 경로 입력
+        fCreator: 'createSEditor2',
+        htParams: {
+            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseToolbar: false,
+            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseVerticalResizer: false,
+            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+            bUseModeChanger: false,
+        },
+    });
+</script>
+</html>

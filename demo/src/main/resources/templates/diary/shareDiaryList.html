@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 - 목록</title>
+    <link rel='stylesheet' th:href="@{bootstrap/css/bootstrap.css}">
+</head>
+<body>
+<header th:insert="diary/shareheader.html"></header>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">작성일</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" th:each="post : ${shareList}">
+            <th scope="row">
+                <span th:text="${post.createdDate}"></span>
+            </th>
+            <td>
+                <a th:href="@{'/share/' + ${post.id}}">
+                    <span th:text="${post.title}"></span>
+                </a>
+            </td>
+            <td >
+                <span th:text="${post.username}">></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-auto mr-auto"></div>
+        <div class="col-auto">
+            <a class="btn btn-primary" th:href="@{'/diary'}" role="button">일기쓰기</a>
+        </div>
+    </div>
+</div>
+
+<!--<script th:src="@{bootstrap/js/jquery.min.js}"></script>-->
+
+<script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
