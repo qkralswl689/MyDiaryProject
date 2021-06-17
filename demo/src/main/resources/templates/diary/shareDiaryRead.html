@@ -44,24 +44,26 @@ post : [[${post}]]
             </a>
         </div>
         <div class="menu4" id="menu">
-            <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
-            <div class="overlay">
-                <div class="text">여 <br />행</div>
-            </div>
+            <a  class="menu4" onclick="location.href='/plan'" >
+                <img src="https://img.icons8.com/color/96/4a90e2/airplane-landing--v2.gif" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text" >여 <br />행</div>
+                </div>
+            </a>
         </div>
     </div>
     <!--head left-->
     <div class="head right">
         <div class="clearboxprofile"></div>
-        <p class="welcome" th:text="| ${loginUser.username}님 반갑습니당. |"></p>
+        <p class="welcome" th:text="| ${loginUser.username}님 반갑습니다. |"></p>
         <button type="button" class="btm_image1" id="img_btn">
-            <img th:src="|/images/${loginUser.userimage}|" class="profileimage" width="70px," height="70px" />
+            <img th:src="|/images/${loginUser.userimage}|"  onclick="location.href='/mypage'" class="profileimage" width="70px," height="70px" />
         </button>
     </div>
 
-        <div class="clearbox"></div>
-    </div>
-    <!--head rignt-->
+    <div class="clearbox"></div>
+</div>
+<!--head rignt-->
 </div>
 <!--head-->
 <div class="main">
@@ -70,7 +72,7 @@ post : [[${post}]]
             <article class="contents-01-article left">
                 <div class="outer">
                     <div class="inner">
-                    <img th:src="@{'/diaryimg/' + ${postFile.getFilename()}}" class="diaryimage" align="center">
+                        <img th:src="@{'/diaryimg/' + ${postFile.getFilename()}}" class="diaryimage" align="center">
                     </div>
                 </div>
             </article>
@@ -83,10 +85,6 @@ post : [[${post}]]
     <div class="container2">
         <div class="main_right_box">
             <article class="contents-01-article right">
-
-                <label class="read_container_check" >일기를 공유합니다.
-                    <input th:type="checkbox" th:filed="${post.ckshare}" name="ckshare" id = "ckshare"/>
-                </label>
 
                 <div class="card-text">
                     <p>작성 날짜 : <small class="text-muted" th:text="${post.createdDate}"></small></p>
@@ -106,28 +104,30 @@ post : [[${post}]]
                                 </label>
                                 <div class="titleContainer" th:text="${post.title}" name="title" id="userName" type="text"></div>
                             </div>
-
-                            <!--inputContainer-->
-                            <div class="inputContainerRead">
-                                <textarea th:text="${post.content}" name="content" id="txtContent" rows="23" style="width: 92%"></textarea>
-
-
-                                <!--inputContainer-->
-
+                            <div class="inputContainer2">
+                                <textarea th:text="${post.content}" name="content" id="txtContent" rows="25" style="width: 92%"></textarea>
                             </div>
+                            <!--inputContainer-->
+                            <div class="row mt-3">
 
+                        </form>
+                        <div class="col-auto">
 
-                        <!--formBody-->
+                        </div>
                     </div>
+
+
+                    <!--formBody-->
                 </div>
-            </article>
-            <!--contents-01-article bottom right-->
-            <div class="clearbox"></div>
         </div>
-        <!--main_right_box-->
+        </article>
+        <!--contents-01-article bottom right-->
+        <div class="clearbox"></div>
     </div>
-    <!--container2-->
-    <div class="clearbox"></div>
+    <!--main_right_box-->
+</div>
+<!--container2-->
+<div class="clearbox"></div>
 </div>
 <!--main-->
 
@@ -218,4 +218,5 @@ post : [[${post}]]
         },
     });
 </script>
+
 </html>

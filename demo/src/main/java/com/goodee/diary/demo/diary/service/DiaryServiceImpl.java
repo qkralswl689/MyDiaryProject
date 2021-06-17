@@ -77,29 +77,6 @@ public class DiaryServiceImpl implements DiaryService {
     }
 
 
-    /*public List<DiaryDto> getDiaryListById(String username){
-
-        List<DiaryVO> diaryVOList = diaryRepository.findAll();
-
-        List<DiaryDto> selectedList = new ArrayList<>();
-
-        for (DiaryVO diaryVo :
-                diaryVOList) {
-            if (diaryVo.getUsername().trim().equals(username)) {
-                DiaryDto diaryDto = DiaryDto.builder()
-                        .id(diaryVo.getId())
-                        .title(diaryVo.getTitle())
-                        .content(diaryVo.getContent())
-                        .createdDate(diaryVo.getCreatedDate())
-                        .ckshare(diaryVo.getCkshare())
-                        .username(diaryVo.getUsername())
-                        .build();
-                selectedList.add(diaryDto);
-            }
-        }
-        return selectedList;
-    }*/
-
     @Override
     public List<DiaryDto> shareAllDiary() {
 

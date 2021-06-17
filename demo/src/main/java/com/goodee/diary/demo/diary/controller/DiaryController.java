@@ -134,11 +134,6 @@ public class DiaryController {
         diaryService.saveDiary(diaryDto);
         log.info("postFile : " + diaryFileDto.getFilename());
 
-        HttpSession sessionDiary = request.getSession();
-        sessionDiary.setAttribute("diary",diaryService.saveDiary(diaryDto));
-        log.debug("session value = {}", session);
-
-        /*return "redirect:/read/" + diaryService.findId();*/
         return "redirect:/list";
     }
 
@@ -166,8 +161,6 @@ public class DiaryController {
         diaryFileDto.setOrigFilename(fileList.getOrigFilename());
         diaryFileDto.setFilePath(fileList.getFilePath());
 
-        diaryDto.setUsername(loginUser.getUsername());
-        log.info("/////////////post " + diaryDto);
 
         model.addAttribute("post", diaryDto);
         model.addAttribute("postFile",fileList);
@@ -193,8 +186,6 @@ public class DiaryController {
         diaryFileDto.setOrigFilename(fileList.getOrigFilename());
         diaryFileDto.setFilePath(fileList.getFilePath());
 
-        diaryDto.setUsername(loginUser.getUsername());
-        log.info("/////////////post " + diaryDto);
 
         model.addAttribute("post", diaryDto);
         model.addAttribute("postFile",fileList);
