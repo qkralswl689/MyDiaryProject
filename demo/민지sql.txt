@@ -1,0 +1,17 @@
+create table diaryvo (
+        id number(19,0) primary key,
+        content varchar2(500) not null,
+        created_date date,
+        delete_time date,
+        delete_yn varchar2(255),
+        modified_date date,
+        secret_yn varchar2(255),
+        title varchar2(100) not null   
+);
+
+create table file_upload(
+ID number(19,0),
+FILE_PATH varchar2(255 char) ,
+FILENAME varchar2(255 char),
+ORIG_FILENAME varchar2(255 char)
+);

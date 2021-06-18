@@ -1,0 +1,49 @@
+create table spending(
+spendingid number(4) primary key,
+userid number(4) not null,
+spenddate date not null,
+spendname varchar2(20) not null,
+spending number(10) not null
+);
+
+create table minus(
+plusid number(4) not null,
+userid number(4) not null,
+plusdate date not null,
+plusname varchar2(20) not null,
+plusmoney number(10) not null
+);
+
+create table expenditure(
+minusid number(4) not null,
+userid number(4) not null,
+minusdate date not nul,
+minusname varchar2(20) not null,
+iscard varchar2(5) not null,
+minusmoney number(10) not null
+);
+
+create table diaryuser(
+userid number(4) primary key,
+useremail varchar2(50) not null,
+userpw varchar2(100) not null,
+username varchar2(20) not null,
+userbirth date not null,
+userimage varchar2(100)
+);
+
+create sequence spending_seq
+start with 1
+increment by 1;
+
+create sequence minus_seq
+start with 1
+increment by 1;
+
+create sequence plus_seq
+start with 1
+increment by 1;
+
+create sequence diaryuser_seq
+start with 1
+increment by 1;
