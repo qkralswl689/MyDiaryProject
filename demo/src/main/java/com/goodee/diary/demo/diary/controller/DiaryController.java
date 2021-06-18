@@ -78,7 +78,7 @@ public class DiaryController {
 
         // 프로젝트 폴더에 저장하기 위해 절대경로를 설정 (Window 의 Tomcat 은 Temp 파일을 이용한다)
 
-        String absolutePath = "C:\\Users\\82104\\Desktop\\project\\";
+        String absolutePath = "C:\\Users\\82104\\Desktop\\MyDiaryProject\\";
         log.info("absolutePath" + new File("").getAbsolutePath());
 
         // 경로를 지정하고 그곳에다가 저장할 심산이다
@@ -254,7 +254,7 @@ public class DiaryController {
 
         // 프로젝트 폴더에 저장하기 위해 절대경로를 설정 (Window 의 Tomcat 은 Temp 파일을 이용한다)
         /* String absolutePath = new File("").getAbsolutePath() + "\\demo\\src\\main\\resources\\static\\";*/
-        String absolutePath = "C:\\Users\\82104\\Desktop\\project\\";
+        String absolutePath = "C:\\Users\\82104\\Desktop\\MyDiaryProject\\";
         log.info("absolutePath" + new File("").getAbsolutePath());
         //C:\Users\misec\Desktop\demo + "\\src\\main\\resources\\static"
 

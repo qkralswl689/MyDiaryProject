@@ -14,7 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         // 절대경로 지정
         registry.addResourceHandler("/diaryimg/**")
-                .addResourceLocations("file:///C:\\Users\\82104\\Desktop\\project\\diaryimg/");
+                .addResourceLocations("file:///C:\\Users\\82104\\Desktop\\MyDiaryProject\\diaryimg/");
         
         // 상대경로지정
         registry.addResourceHandler("/**")
