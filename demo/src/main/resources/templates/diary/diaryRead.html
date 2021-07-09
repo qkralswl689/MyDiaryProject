@@ -105,7 +105,7 @@ post : [[${post}]]
                                 <div class="titleContainer" th:text="${post.title}" name="title" id="userName" type="text"></div>
                             </div>
                                 <div class="inputContainer2">
-                                    <textarea th:text="${post.content}" name="content" id="txtContent" rows="25" style="width: 92%"></textarea>
+                                    <textarea th:readonly="readonly"  th:text="${post.content}" name="content" id="txtContent" rows="25" style="width: 92%" ></textarea>
                                 </div>
                                 <!--inputContainer-->
                             <div class="row mt-3">

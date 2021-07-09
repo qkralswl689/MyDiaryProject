@@ -20,7 +20,6 @@ public class DiaryServiceImpl implements DiaryService {
     private DiaryRepository diaryRepository;
 
 
-
     public DiaryServiceImpl(DiaryRepository diaryRepository){
         this.diaryRepository = diaryRepository;
     }
