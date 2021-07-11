@@ -8,6 +8,25 @@
 <body>
 <header th:insert="diary/header.html"></header>
 <div class="container">
+    <!-- 검색 -->
+    <form action="/list" method="get" id="searchForm">
+        <div class="input-group">
+            <input type="hidden" name="page" value = "1">
+            <div class="input-group-prepend">
+                <select class="custom-select" name="type">
+                   <!-- <option th:selected="${pageRequestDTO.type == null}">-&#45;&#45;&#45;&#45;&#45;&#45;</option>
+                    <option value="t" th:selected="${pageRequestDTO.type =='t'}" >제목</option>
+                    <option value="c" th:selected="${pageRequestDTO.type =='c'}"  >내용</option>
+                    <option value="tc"  th:selected="${pageRequestDTO.type =='tc'}" >제목 + 내용</option>-->
+                </select>
+            </div>
+            <input class="form-control" name="keyword"> <!--th:value="${pageRequestDTO.keyword}-->
+            <div class="input-group-append" id="button-addon4">
+                <button class="btn btn-outline-secondary btn-search" type="button">Search</button>
+                <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>
+            </div>
+        </div>
+    </form>
     <table class="table">
         <thead class="thead-light">
         <tr class="text-center">
@@ -43,5 +62,23 @@
 <!--<script th:src="@{bootstrap/js/jquery.min.js}"></script>-->
 
 <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>
+<script>
+
+    <!-- btn-search를 클릭하면 새롭게 선택된 겁색 타입과 키워드로 1페이지 검색 -->
+    var searchForm = $("#searchForm");
+
+    $('.btn-search').click(function(e){
+
+        searchForm.submit();
+
+    });
+
+    <!-- btn-clear 클릭하면 모든 검색과 관련된 내용을 삭제하고 검색이 없는 목록페이지를 호출 -->
+    $('.btn-clear').click(function(e){
+
+        searchForm.empty().submit();
+
+    });
+</script>
 </body>
 </html>

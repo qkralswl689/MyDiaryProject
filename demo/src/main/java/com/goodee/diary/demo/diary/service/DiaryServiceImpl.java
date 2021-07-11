@@ -6,6 +6,7 @@ import com.goodee.diary.demo.diary.dao.DiaryDto;
 import com.goodee.diary.demo.diary.dao.DiaryRepository;
 import com.goodee.diary.demo.diary.dao.PageRequestDTO;
 import com.goodee.diary.demo.diary.domain.DiaryVO;
+import com.goodee.diary.demo.diary.domain.QDiaryVO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.extern.java.Log;
@@ -168,12 +169,13 @@ public class DiaryServiceImpl implements DiaryService {
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
+        QDiaryVO qDiaryVO = QDiaryVO.diaryVO;
 
 
         String keyword = requestDTO.getKeyword();
 
         // gno > 0 조건만 생성
-       /* BooleanExpression expression = qGuestbook.gno.gt(0L);
+        BooleanExpression expression = qDiaryVO.id.gt(0L);
 
         booleanBuilder.and(expression);
 
@@ -187,17 +189,14 @@ public class DiaryServiceImpl implements DiaryService {
         BooleanBuilder conditionBuilder = new BooleanBuilder();
 
         if(type.contains("t")){
-            conditionBuilder.or(qGuestbook.title.contains(keyword));
+            conditionBuilder.or(qDiaryVO.title.contains(keyword));
         }
         if(type.contains("c")){
-            conditionBuilder.or(qGuestbook.content.contains(keyword));
-        }
-        if(type.contains("w")){
-            conditionBuilder.or(qGuestbook.writer.contains(keyword));
+            conditionBuilder.or(qDiaryVO.content.contains(keyword));
         }
 
         // 모든 조건 통합
-        booleanBuilder.and(conditionBuilder);*/
+        booleanBuilder.and(conditionBuilder);
 
         return booleanBuilder;
 

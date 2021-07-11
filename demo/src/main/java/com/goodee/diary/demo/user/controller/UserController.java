@@ -2,6 +2,9 @@ package com.goodee.diary.demo.user.controller;
 
 import com.goodee.diary.demo.SHA2;
 import com.goodee.diary.demo.ScriptUtils;
+import com.goodee.diary.demo.diary.dao.PageRequestDTO;
+import com.goodee.diary.demo.diary.service.DiaryService;
+import com.goodee.diary.demo.diary.service.DiaryServiceImpl;
 import com.goodee.diary.demo.user.domain.User;
 import com.goodee.diary.demo.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +33,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+
+    private final DiaryService diaryService;
+
+    public UserController(DiaryService diaryService) {
+        this.diaryService = diaryService;
+    }
+
     @GetMapping
     public String getUser(HttpServletRequest request, Model model) {
         System.out.println("testpage login");
@@ -40,10 +49,11 @@ public class UserController {
     }
 
     @PostMapping
-    public String loginSuccess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String loginSuccess(HttpServletRequest request, HttpServletResponse response, PageRequestDTO pageRequestDTO,Model model) throws IOException {
         log.info("login Success test");
         HttpSession session = request.getSession();
         log.debug("session value = {}", session);
+        model.addAttribute("result",diaryService.getDiaryList());
         List<User> userList = userService.getAll();
         for (User user :
                 userList) {
