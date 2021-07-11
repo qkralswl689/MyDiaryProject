@@ -4,7 +4,10 @@ package com.goodee.diary.demo.diary.service;
 
 import com.goodee.diary.demo.diary.dao.DiaryDto;
 import com.goodee.diary.demo.diary.dao.DiaryRepository;
+import com.goodee.diary.demo.diary.dao.PageRequestDTO;
 import com.goodee.diary.demo.diary.domain.DiaryVO;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
@@ -159,6 +162,46 @@ public class DiaryServiceImpl implements DiaryService {
         return diaryRepository.findId();
     }
 
+    private BooleanBuilder getSearch(PageRequestDTO requestDTO){
+        //Querydsl 처리
+        String type = requestDTO.getType();
+
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+
+
+        String keyword = requestDTO.getKeyword();
+
+        // gno > 0 조건만 생성
+       /* BooleanExpression expression = qGuestbook.gno.gt(0L);
+
+        booleanBuilder.and(expression);
+
+        // 검색 조건이 없는경우
+        if(type == null || type.trim().length() == 0){
+            return booleanBuilder;
+        }
+
+        // 검색 조건 작성
+
+        BooleanBuilder conditionBuilder = new BooleanBuilder();
+
+        if(type.contains("t")){
+            conditionBuilder.or(qGuestbook.title.contains(keyword));
+        }
+        if(type.contains("c")){
+            conditionBuilder.or(qGuestbook.content.contains(keyword));
+        }
+        if(type.contains("w")){
+            conditionBuilder.or(qGuestbook.writer.contains(keyword));
+        }
+
+        // 모든 조건 통합
+        booleanBuilder.and(conditionBuilder);*/
+
+        return booleanBuilder;
+
+    }
 
 
 
